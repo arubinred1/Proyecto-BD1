@@ -1,0 +1,23 @@
+.bordeDiv {
+    border: 2px solid #0000001e; /* Borde de 2px de grosor, de color negro */
+}
+
+.containerMiRed{
+    padding: 15px 3%;
+}
+
+.left-sidebarMiRed{
+    flex-basis: 25%;
+    align-self: flex-start;
+    position: sticky;
+    top: 73px;
+
+}
+
+.main-contentMiRed{
+    flex-basis: 300px; /* Ancho fijo o ajustable */
+    flex-shrink: 0; /* Evita que se reduzca el tamaño */
+    padding: 10px;
+    background-color: #f8f9fa; /* Fondo opcional */
+    height: auto; /* Ajusta la altura si es necesario */
+} 
