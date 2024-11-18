@@ -2,22 +2,49 @@
     border: 2px solid #0000001e; /* Borde de 2px de grosor, de color negro */
 }
 
-.containerMiRed{
+.containerMiRed {
     padding: 15px 3%;
 }
 
-.left-sidebarMiRed{
+.left-sidebarMiRed {
     flex-basis: 25%;
     align-self: flex-start;
     position: sticky;
     top: 73px;
-
 }
 
-.main-contentMiRed{
-    flex-basis: 300px; /* Ancho fijo o ajustable */
-    flex-shrink: 0; /* Evita que se reduzca el tamaño */
+.main-containerm {
+    display: flex; /* Usamos flexbox para disposición */
+    gap: 10px; /* Espacio entre la tabla y el contenido */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.table-container {
+    /* No necesitas nada especial aquí, se ajustará automáticamente al tamaño disponible */
+}
+
+.main-contentMiRed {
     padding: 10px;
     background-color: #f8f9fa; /* Fondo opcional */
     height: auto; /* Ajusta la altura si es necesario */
-} 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos a los extremos */
+    align-items: center; /* Centra los elementos verticalmente */
+    width: 100%; /* Asegura que el navbar ocupe el ancho completo del contenedor */
+}
+
+.flex-container {
+    display: flex; /* Usa Flexbox para distribuir los bloques */
+    gap: 10px; /* Espacio entre los bloques */
+    justify-content: space-between; /* Opcional: distribuye los bloques en el espacio disponible */
+}
+
+.flex-item {
+    flex: 1; /* Hace que cada bloque ocupe el mismo espacio disponible */
+    padding: 20px;
+    background-color: lightgray;
+    text-align: center;
+}

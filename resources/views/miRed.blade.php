@@ -85,7 +85,7 @@
     </nav>
 
 
-    <div class="container">
+    <div class="main-containerm">
         <div class="left-sidebarMiRed">
             <div class="sidebar-profile-box">
                 <div class="sidebar-profile-info">
@@ -177,254 +177,46 @@
                     </div>
                 </nav>
             </div>
+            <div class="navbar">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#"><img src="{{ asset('images/empleo.jpeg') }}"
+                                alt="logoEmpleo"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Empleos en Honduras
+                                        te
+                                        ha invitado a suscribirte a Vacantes Empleos en Honduras</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Aceptar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Rechazar</a>
+                                </li>
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#"><img src="{{ asset('images/empleo.jpeg') }}"
-                            alt="logoEmpleo"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Empleos en Honduras te
-                                    ha invitado a suscribirte a Vacantes Empleos en Honduras</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Aceptar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Rechazar</a>
-                            </li>
-
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-
+                </nav>
+            </div>
             <div>
-
+                
+            <div class="flex-container">
+                <div class="flex-item">Bloque 1</div>
+                <div class="flex-item">Bloque 2</div>
+                <div class="flex-item">Bloque 3</div>
             </div>
-            <div class="post">
-                <div class="post-author">
-                    <img src="images/user-3.png">
-                    <div>
-                        <h1>Bejamin Leo</h1>
-                        <small>Founder and CEO at Giva | Angel Investor</small>
-                        <small>2 hours ago </small>
-                    </div>
-                </div>
-                <p>The sucess of every website depends on Search engine optimisation
-                    and digital marketing strategy. If you are not in the first page of all major search engines
-                    then you are ahead among your competitors.
-                </p>
-                <img src="images/post-image-1.png"width="100%">
-
-
-
-                <div class="post-stats">
-                    <div>
-                        <img src="images/thumbsup.png">
-                        <img src="images/love.png">
-                        <img src="images/clap.png">
-                        <span class="liked-users">Adam Doe and 89 others</span>
-                    </div>
-                    <div>
-                        <span>22 comments &middot; 40 shares</span>
-                    </div>
-                </div>
-                <div class="post-activity">
-                    <div>
-                        <img src="images/user-1.png" class="post-activity-user-icon">
-                        <img src="images/down-arrow.png" class="post-activity-arrow-icon">
-
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/like.png">
-                        <span>Like</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/comment.png">
-                        <span>Comment</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/share.png">
-                        <span>Share</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/send.png">
-                        <span>Send</span>
-                    </div>
-                </div>
             </div>
 
 
-
-            <div class="post">
-                <div class="post-author">
-                    <img src="images/user-4.png">
-                    <div>
-                        <h1>Claire Smith</h1>
-                        <small>SDE at Swiggy | Solopreneur</small>
-                        <small>2 hours ago </small>
-                    </div>
-                </div>
-                <p>The sucess of every website depends on Search engine optimisation
-                    and digital marketing strategy. If you are not in the first page of all major search engines
-                    then you are ahead among your competitors.
-                </p>
-                <img src="images/post-image-2.png"width="100%">
-
-
-
-                <div class="post-stats">
-                    <div>
-                        <img src="images/thumbsup.png">
-                        <img src="images/love.png">
-                        <img src="images/clap.png">
-                        <span class="liked-users">Adam Doe and 89 others</span>
-                    </div>
-                    <div>
-                        <span>22 comments &middot; 40 shares</span>
-                    </div>
-                </div>
-                <div class="post-activity">
-                    <div>
-                        <img src="images/user-1.png" class="post-activity-user-icon">
-                        <img src="images/down-arrow.png" class="post-activity-arrow-icon">
-
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/like.png">
-                        <span>Like</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/comment.png">
-                        <span>Comment</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/share.png">
-                        <span>Share</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/send.png">
-                        <span>Send</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="post">
-                <div class="post-author">
-                    <img src="images/user-3.png">
-                    <div>
-                        <h1>Bejamin Leo</h1>
-                        <small>Founder and CEO at Giva | Angel Investor</small>
-                        <small>2 hours ago </small>
-                    </div>
-                </div>
-                <p>The sucess of every website depends on Search engine optimisation
-                    and digital marketing strategy. If you are not in the first page of all major search engines
-                    then you are ahead among your competitors.
-                </p>
-                <img src="images/post-image-3.png"width="100%">
-
-
-
-                <div class="post-stats">
-                    <div>
-                        <img src="images/thumbsup.png">
-                        <img src="images/love.png">
-                        <img src="images/clap.png">
-                        <span class="liked-users">Adam Doe and 89 others</span>
-                    </div>
-                    <div>
-                        <span>22 comments &middot; 40 shares</span>
-                    </div>
-                </div>
-                <div class="post-activity">
-                    <div>
-                        <img src="images/user-1.png" class="post-activity-user-icon">
-                        <img src="images/down-arrow.png" class="post-activity-arrow-icon">
-
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/like.png">
-                        <span>Like</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/comment.png">
-                        <span>Comment</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/share.png">
-                        <span>Share</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/send.png">
-                        <span>Send</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="post">
-                <div class="post-author">
-                    <img src="images/user-3.png">
-                    <div>
-                        <h1>Bejamin Leo</h1>
-                        <small>Founder and CEO at Giva | Angel Investor</small>
-                        <small>2 hours ago </small>
-                    </div>
-                </div>
-                <p>The sucess of every website depends on Search engine optimisation
-                    and digital marketing strategy. If you are not in the first page of all major search engines
-                    then you are ahead among your competitors.
-                </p>
-                <img src="images/post-image-4.png"width="100%">
-
-
-
-                <div class="post-stats">
-                    <div>
-                        <img src="images/thumbsup.png">
-                        <img src="images/love.png">
-                        <img src="images/clap.png">
-                        <span class="liked-users">Adam Doe and 89 others</span>
-                    </div>
-                    <div>
-                        <span>22 comments &middot; 40 shares</span>
-                    </div>
-                </div>
-                <div class="post-activity">
-                    <div>
-                        <img src="images/user-1.png" class="post-activity-user-icon">
-                        <img src="images/down-arrow.png" class="post-activity-arrow-icon">
-
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/like.png">
-                        <span>Like</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/comment.png">
-                        <span>Comment</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/share.png">
-                        <span>Share</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/send.png">
-                        <span>Send</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+            
     </div>
     </div>
 
