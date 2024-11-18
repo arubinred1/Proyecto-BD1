@@ -90,7 +90,7 @@
             <div class="sidebar-profile-box">
                 <div class="sidebar-profile-info">
 
-                    <table class="table table-dark">
+                    <table class="table tableGestion">
                         <thead>
                         </thead>
                         <tbody>
@@ -98,22 +98,22 @@
                                 <th scope="row">Gerstionar mi red</th>
                             </tr>
                             <tr>
-                                <th scope="row">mi red</th>
+                                <th scope="row"><a class="aHref" href="">Mi red </a></th>
                             </tr>
                             <tr>
-                                <th scope="row">Agenda</th>
+                                <th scope="row"><a class="aHref" href="">Agenda</a></th>
                             </tr>
                             <tr>
-                                <th scope="row">Seguidores</th>
+                                <th scope="row"><a class="aHref" href="">Seguidores</a></th>
                             </tr>
                             <tr>
-                                <th scope="row">Grupos</th>
+                                <th scope="row"><a class="aHref" href="">Grupos</a></th>
                             </tr>
                             <tr>
-                                <th scope="row">Eventos</th>
+                                <th scope="row"><a class="aHref" href="">Eventos</a></th>
                             </tr>
                             <tr>
-                                <th scope="row">Paginas</th>
+                                <th scope="row"><a class="aHref" href="">Paginas</a></th>
                             </tr>
                         </tbody>
                     </table>
@@ -176,48 +176,70 @@
                         </div>
                     </div>
                 </nav>
-            </div>
-            <div class="navbar">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="#"><img src="{{ asset('images/empleo.jpeg') }}"
-                                alt="logoEmpleo"></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Empleos en Honduras
-                                        te
-                                        ha invitado a suscribirte a Vacantes Empleos en Honduras</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Aceptar</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Rechazar</a>
-                                </li>
+                <div class="navbar">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#"><img src="{{ asset('images/empleo.jpeg') }}"
+                                    alt="logoEmpleo"></a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Empleos en
+                                            Honduras
+                                            te
+                                            ha invitado a suscribirte a Vacantes Empleos en Honduras</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Aceptar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Rechazar</a>
+                                    </li>
 
-                            </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+
+
+            <div>
+                <p class="Pcontainer">Personas que quizas conozcas</p>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <div class="image-container">
+                            <img src="{{ asset('images/user-4.png') }}" alt="logoEmpleo">
+                            <p>Monique Matamoros</p>
+                            <button type="button" class="btn btn-primary">Conectar</button>
                         </div>
                     </div>
-                </nav>
-            </div>
-            <div>
-                
-            <div class="flex-container">
-                <div class="flex-item">Bloque 1</div>
-                <div class="flex-item">Bloque 2</div>
-                <div class="flex-item">Bloque 3</div>
-            </div>
+                    <div class="flex-item">
+                        <div class="image-container">
+                            <img src="{{ asset('images/user-2.png') }}" alt="logoEmpleo">
+                            <p>José Perez</p>
+                            <button type="button" class="btn btn-primary">Conectar</button>
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="image-container">
+                            <img src="{{ asset('images/user-3.png') }}" alt="logoEmpleo">
+                            <p>Marina Flores</p>
+                            <button type="button" class="btn btn-primary">Conectar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
-            
-    </div>
+
+        </div>
     </div>
 
     <script>

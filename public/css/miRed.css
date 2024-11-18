@@ -14,19 +14,20 @@
 }
 
 .main-containerm {
-    display: flex; /* Usamos flexbox para disposición */
-    gap: 10px; /* Espacio entre la tabla y el contenido */
+    display: flex;
+    justify-content: center;  /* Centra el contenido horizontalmente */
+    gap: 10px; /* Espacio entre los elementos */
     width: 100%; /* Asegura que ocupe todo el ancho disponible */
-}
-
-.table-container {
-    /* No necesitas nada especial aquí, se ajustará automáticamente al tamaño disponible */
+    padding: 0 20px; /* Agrega un poco de espacio en los laterales */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
 }
 
 .main-contentMiRed {
     padding: 10px;
     background-color: #f8f9fa; /* Fondo opcional */
     height: auto; /* Ajusta la altura si es necesario */
+    max-width: 1200px; /* Limita el ancho del contenedor */
+    width: 100%;
 }
 
 .navbar {
@@ -39,7 +40,8 @@
 .flex-container {
     display: flex; /* Usa Flexbox para distribuir los bloques */
     gap: 10px; /* Espacio entre los bloques */
-    justify-content: space-between; /* Opcional: distribuye los bloques en el espacio disponible */
+    justify-content: space-between; /* Distribuye los bloques en el espacio disponible */
+    align-items: center; /* Alinea las imágenes y nombres verticalmente */
 }
 
 .flex-item {
@@ -47,4 +49,39 @@
     padding: 20px;
     background-color: lightgray;
     text-align: center;
+}
+
+.image-container {
+    display: flex; /* Para organizar imagen y nombre */
+    flex-direction: column; /* Coloca los elementos (imagen y nombre) en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+}
+
+.image-container img {
+    width: 100px; /* Puedes ajustar el tamaño de las imágenes */
+    height: 100px; /* Puedes ajustar el tamaño de las imágenes */
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+}
+
+.image-container p {
+    margin-top: 8px; /* Espacio entre la imagen y el nombre */
+    font-weight: bold; /* Estilo del texto */
+    font-size: 16px; /* Tamaño de fuente ajustable */
+}
+
+.Pcontainer {
+    padding-top: 5px;
+    margin-top: 8px; /* Espacio entre la imagen y el nombre */
+    font-weight: bold; /* Estilo del texto */
+    font-size: 16px; /* Tamaño de fuente ajustable */
+    color:rgb(42, 42, 145);
+}
+
+.tableGestion {
+    color: antiquewhite;
+}
+
+.aHref {
+    color: rgba(0, 0, 0, 0.747);
 }
