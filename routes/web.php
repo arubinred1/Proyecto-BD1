@@ -17,3 +17,15 @@ Route::get('/miRed', function () {
 Route::get('/perfil', function () {
     return view('perfil');
 });
+
+Route::get('/empleos', function () {
+    return view('empleos');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/alertaemp', function () {
+    return view('alertaemp');
+});
