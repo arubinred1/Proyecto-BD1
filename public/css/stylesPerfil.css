@@ -1,0 +1,109 @@
+/* Estilo principal para el contenedor */
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+    height: calc(100vh - 80px);
+    /* Ajusta para incluir el alto de la barra de navegación */
+}
+
+/* Sidebar izquierda */
+.left-sidebar {
+    flex: 2;
+    /* Se ajusta dinámicamente */
+    background-color: #f5f5f5;
+    padding: 20px;
+    overflow-y: auto;
+    /* Añade scroll si es necesario */
+}
+
+/* Información del perfil */
+.sidebar-profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Alinea los elementos al inicio del eje transversal (izquierda) */
+    text-align: left;
+    /* Alinea el texto a la izquierda */
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-profile-info img {
+    display: block;
+    /* Asegura que la imagen sea un bloque */
+    margin-left: 0;
+    /* Alinea la imagen a la izquierda */
+    width: 120px;
+    /* Ajusta el tamaño de la imagen */
+    height: 120px;
+    /* Ajusta el tamaño de la imagen */
+    border-radius: 50%;
+    /* Mantiene la forma redonda */
+    margin-bottom: 10px;
+    /* Espaciado entre la imagen y el siguiente contenido */
+}
+
+.sidebar-profile-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar-profile-info ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar-profile-info ul li span {
+    font-weight: bold;
+}
+
+/* Sidebar derecha */
+.right-sidebar {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.colorHref {
+    color: rgb(0, 85, 255);
+}
+
+/* Estilo para los botones */
+.btn {
+    border-radius: 30px;
+    /* Aumenta el valor para hacer los bordes más redondeados */
+    padding: 10px 20px;
+    /* Ajusta el padding para que los botones se vean más grandes */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    /* El color principal del botón */
+    border-color: #007bff;
+    /* Color del borde del botón */
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    /* Color del texto */
+    border-color: #007bff;
+    /* Color del borde */
+}
+
+.btn-primary:hover,
+.btn-outline-primary:hover {
+    background-color: #0056b3;
+    /* Color de fondo al pasar el ratón (hover) */
+    border-color: #0056b3;
+    /* Cambia el borde en el hover */
+}

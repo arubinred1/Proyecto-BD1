@@ -13,3 +13,7 @@ Route::get('/principal', function () {
 Route::get('/miRed', function () {
     return view('miRed');
 });
+
+Route::get('/perfil', function () {
+    return view('perfil');
+});
