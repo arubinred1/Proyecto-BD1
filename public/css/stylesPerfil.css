@@ -71,7 +71,7 @@
     flex: 1;
     background-color: #f5f5f5;
     padding: 20px;
-    overflow-y: auto;
+    
 }
 
 .colorHref {
@@ -107,3 +107,54 @@
     border-color: #0056b3;
     /* Cambia el borde en el hover */
 }
+
+.sidebar img.logoUnah {
+    width: 150px;
+    height: auto; /* Mantén proporciones */
+}
+
+.university-name {
+    font-size: 18px; /* Tamaño más grande para el nombre */
+    margin: 0; /* Elimina márgenes */
+}
+
+.years {
+    font-size: 14px; /* Tamaño más pequeño para los años */
+    margin: 0; /* Elimina márgenes */
+    color: gray; /* Opcional: Cambia el color para distinguirlo */
+}
+
+.flex-item-profile {
+    flex: 1; /* Hace que cada bloque ocupe el mismo espacio disponible */
+    padding: 50px;
+    background-color: rgb(249, 247, 247);
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna */
+    gap: 20px; /* Espacio entre los elementos */
+    flex-wrap: wrap; /* No es necesario en este caso, pero lo dejo por si quieres habilitar el ajuste */
+}
+
+.image-container-profile {
+    display: flex; /* Para organizar imagen y nombre */
+    flex-direction: column; /*Coloca los elementos (imagen y nombre) en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+}
+
+.image-container-profile img {
+    width: 80px; /* Puedes ajustar el tamaño de las imágenes */
+    height: 80px; /* Puedes ajustar el tamaño de las imágenes */
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+}
+
+.image-container-profile p {
+    margin-left: 8px; /* Espacio entre la imagen y el nombre */
+    font-weight: bold; /* Estilo del texto */
+    font-size: 16px; /* Tamaño de fuente ajustable */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+

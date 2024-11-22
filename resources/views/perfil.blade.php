@@ -112,7 +112,7 @@
                                     <p>En busca de empleo
                                         Cargos de Ingeniero de software
 
-                                        <a href=""  class="colorHref">Mostrar detalles</a>
+                                        <a href="" class="colorHref">Mostrar detalles</a>
                                     </p>
 
                                 </div>
@@ -132,28 +132,34 @@
 
             </div>
 
+
             <div class="sidebar-activity" id="sidebarActivity">
-                <h3>RECENT</h3>
-                <a href="#"><img src="images/recent.png">Data Analysis</a>
-                <a href="#"><img src="images/recent.png">UI UX Design</a>
-                <a href="#"><img src="images/recent.png">Web Development</a>
-                <a href="#"><img src="images/recent.png">Object Oriented Programming</a>
-                <a href="#"><img src="images/recent.png">Operating Systems</a>
-                <a href="#"><img src="images/recent.png">Platform technologies</a>
-                <h3>GROUPS</h3>
-                <a href="#"><img src="images/group.png">Data Analyst group</a>
-                <a href="#"><img src="images/group.png">Learn NumPy</a>
-                <a href="#"><img src="images/group.png">Machine Learning group</a>
-                <a href="#"><img src="images/group.png">Data Science Aspirants</a>
-                <h3>HASHTAG</h3>
-                <a href="#"><img src="images/hashtag.png">dataanalyst</a>
-                <a href="#"><img src="images/hashtag.png">numpy</a>
-                <a href="#"><img src="images/hashtag.png">machinelearning</a>
-                <a href="#"><img src="images/hashtag.png">datascience</a>
-                <div class="discover-more-link">
-                    <a href="#">Discover More</a>
-                </div>
+                <h2>Experiencia</h2>
+                <a href="#">
+                    <h3>Muestra tus logros</h3>
+                </a>
+                <h4>2002-2009</h4>
             </div>
+
+            <div class="sidebar-activity" id="sidebarActivity">
+                <h2>Educacion</h2>
+                <a href="#">
+                    <img class="logoUnah" src="images/logoUnah.jpg" alt="Logo UNAH">
+                    <h3>Universidad Nacional Autónoma de Honduras</h3>
+                </a>
+                <h4>2002-2009</h4>
+            </div>
+            <div class="sidebar-activity" id="sidebarActivity">
+                <h2>Conocimientos y Aptitudes</h2>
+                <a href="#">
+                    <h3>Infraestructura de Software</h3>
+                </a>
+                <h4>2002-2009</h4>
+            </div>
+
+            
+            
+            
             <p id="showMoreLink" onclick="toggleActivity()">Show more <b>+</b></p>
 
         </div>
@@ -161,39 +167,39 @@
 
         <div class="right-sidebar">
             <div class="sidebar-news">
-                <img src="images/more.png" class="info-icon">
-                <h3>Trending News</h3>
+                <h3>Personas que quizas conozcas</h3>
 
-                <a href="#">High Demand for Skilled Employees</a>
-                <span>1d ago &middot; 10,934 readers</span>
-
-
-                <a href="#">Inflation in Canada Affects the Workforce</a>
-                <span>2d ago &middot; 7,043 readers</span>
-
-
-                <a href="#">Mass Recruiters fire Employees</a>
-                <span>4d ago &middot; 17,789 readers</span>
-
-
-                <a href="#">Crypto predicted to Boom this year</a>
-                <span>9d ago &middot; 2, 436 readers</span>
-
-                <a href="#" class="read-more-link">Read More</a>
-
+                <div class="flex-container">
+        <div class="flex-item-profile">
+            <div class="image-container-profile">
+                <img src="{{ asset('images/user-4.png') }}" alt="logoEmpleo" class="image-container-profile">
+                <p class="image-container-profile">Monique Matamoros</p>
+                <a href="#" class="ad-link">Seguir</a>
+            </div>
+        </div>
+        <div class="flex-item-profile">
+            <div class="image-container-profile">
+                <img src="{{ asset('images/user-4.png') }}" alt="logoEmpleo" class="image-container-profile">
+                <p class="image-container-profile">Monique Matamoros</p>
+                <a href="#" class="ad-link">Seguir</a>
+            </div>
+        </div>
+</div>
 
             </div>
 
             <div class="sidebar-ad">
-                <small>Ad &middot; &middot; &middot;</small>
-                <p>Master Web Development</p>
-                <div>
-                    <img src="images/user-1.png">
-                    <img src="images/mi-logo.png">
+            <div class="sidebar-news">
+                <h4>Mas perfiles para ti</h4>
 
-                </div>
-                <b>Brand and Demand in Xiaomi</b>
-                <a href="#" class="ad-link">Learn More</a>
+                <div class="flex-container">
+        <div class="flex-item-profile">
+            <div class="image-container-profile">
+                <img src="{{ asset('images/user-4.png') }}" alt="logoEmpleo" class="image-container-profile">
+                <p class="image-container-profile">Monique Matamoros</p>
+                <a href="#" class="ad-link">Seguir</a>
+            </div>
+        </div>
             </div>
 
 
