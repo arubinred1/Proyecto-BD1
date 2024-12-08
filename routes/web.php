@@ -29,11 +29,3 @@ Route::get('/login', function () {
 Route::get('/alertaemp', function () {
     return view('alertaemp');
 });
-
-Route::get('/datos', function () {
-    return view('datos');
-});
-
-Route::get('/Registro', function () {
-    return view('Registro');
-});
