@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EstadoConexionController;
+use App\Http\Controllers\UsuarioController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,4 +43,22 @@ Route::get('/Mensajes', function () {
 Route::get('/Grupos', function () {
     return view('Grupos');
 });
+
+Route::get('/dato', function() {
+    return DB::select("SELECT * FROM tbl_estado_conexion");
+});
+
+
+Route::get('/estado', [EstadoConexionController::class, 'index']);
+
+//registro
+// Mostrar formulario de login
+Route::get('/login', [UsuarioController::class, 'showLoginForm'])->name('login');
+
+// Procesar el formulario de login
+Route::post('/login', [UsuarioController::class, 'login'])->name('login.store');
+
+// Cerrar sesión
+Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
+
 

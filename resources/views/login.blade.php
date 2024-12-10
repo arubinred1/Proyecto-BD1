@@ -97,6 +97,16 @@
         .join-now-button:hover {
             background-color: #f3f2ef;
         }
+
+        /* Estilo para los mensajes de error */
+        .alert-danger {
+            color: #fff;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -104,14 +114,28 @@
         <div class="logo">
             <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo">
         </div>
-        <h1>Iniciar Sesion</h1>
+        <h1>Iniciar Sesión</h1>
         <p>Mantente actualizado sobre tu mundo profesional</p>
-        <form action="#" method="POST" class="login-form">
-            <input type="email" name="email" placeholder="correo electronico o telefono" required>
+
+        <!-- Mostrar los errores de validación si existen -->
+        @if ($errors->any())
+            <div class="alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ route('login.store') }}" method="POST" class="login-form">
+            @csrf <!-- Protege contra ataques CSRF -->
+            <input type="email" name="email" placeholder="Correo electrónico o teléfono" required>
             <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit" class="login-button">Registrarse</button>
+            <button type="submit" class="login-button">Iniciar Sesión</button>
         </form>
-        <a href="#" class="forgot-password">Olvidaste tu contraseña?</a>
+
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
         <hr>
         <button class="join-now-button">Unirse ahora</button>
     </div>

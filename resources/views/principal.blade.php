@@ -38,7 +38,7 @@
             <div class="user-info">
                 <img src="images/user-1.png">
                 <div>
-                    <h3>John Doe</h3>
+                <h3>{{ session('nombre') }} {{ session('apellido') }}</h3>
                     <a href="#">See your profile</a>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                 <img src="images/cover-pic.png" width="100%">
                 <div class="sidebar-profile-info">
                     <img src="images/user-1.png">
-                    <h1>John Doe</h1>
+                    <h1>{{ session('nombre') }} {{ session('apellido') }}</h1>
                     <h3>Data Analyst at IBM</h3>
                     <ul>
                         <li>Your profile views <span>24</span></li>
@@ -194,7 +194,6 @@
                     </div>
                 </div>
             </div>
-
 
 
             <div class="post">

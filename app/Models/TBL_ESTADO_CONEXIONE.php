@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TBL_ESTADO_CONEXIONE extends Model
 {
-    protected $table = 'TBL_ESTADO_CONEXIONES';
+    protected $table = 'TBL_ESTADO_CONEXION';
     protected $primaryKey = "CODIGO_ESTADO_CONEXION";
     public $timestamps = false;
 }
