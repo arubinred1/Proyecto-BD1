@@ -29,3 +29,16 @@ Route::get('/login', function () {
 Route::get('/alertaemp', function () {
     return view('alertaemp');
 });
+
+Route::get('/Notificaciones', function () {
+    return view('Notificaciones');
+});
+
+Route::get('/Mensajes', function () {
+    return view('Mensajes');
+});
+
+Route::get('/Grupos', function () {
+    return view('Grupos');
+});
+
