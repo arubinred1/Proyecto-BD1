@@ -1,48 +1,12 @@
 <?php
 
+use App\Http\Controllers\PublicacionController;
+use App\Http\Controllers\VistasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstadoConexionController;
 use App\Http\Controllers\UsuarioController;
+use Illuminate\Support\Facades\DB;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/principal', function () {
-    return view('principal');
-});
-
-Route::get('/miRed', function () {
-    return view('miRed');
-});
-
-Route::get('/perfil', function () {
-    return view('perfil');
-});
-
-Route::get('/empleos', function () {
-    return view('empleos');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/alertaemp', function () {
-    return view('alertaemp');
-});
-
-Route::get('/Notificaciones', function () {
-    return view('Notificaciones');
-});
-
-Route::get('/Mensajes', function () {
-    return view('Mensajes');
-});
-
-Route::get('/Grupos', function () {
-    return view('Grupos');
-});
 
 Route::get('/dato', function() {
     return DB::select("SELECT * FROM tbl_estado_conexion");
@@ -59,6 +23,17 @@ Route::get('/login', [UsuarioController::class, 'showLoginForm'])->name('login')
 Route::post('/login', [UsuarioController::class, 'login'])->name('login.store');
 
 // Cerrar sesión
-Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
+Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout')->name(name: 'logout');
 
 
+Route::get('/', [VistasController::class, 'login'])->name('login');
+//Route::get('/principal', [VistasController::class, 'principal'])->name('principal');
+Route::get('/mired', [VistasController::class, 'mired'])->name('mired');
+Route::get('/empleos', [VistasController::class, 'empleos'])->name('empleos');
+Route::get('/mensajes', [VistasController::class, 'mensajes'])->name('mensajes');
+Route::get('/notificaciones', [VistasController::class, 'notificaciones'])->name('notificaciones');
+Route::get('/perfil', [VistasController::class, 'perfil'])->name('perfil');
+Route::get('/grupos', [VistasController::class, 'grupos'])->name('grupos');
+
+
+Route::get('/principal', [PublicacionController::class, 'mostrarPublicaciones'])->name('principal');

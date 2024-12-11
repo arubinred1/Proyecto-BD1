@@ -26,12 +26,12 @@
         </div>
         <div class="navbar-center">
             <ul>
-                <li><a href="#" class="active-link"><img src="images/home.png" alt="home">
+                <li><a href="{{ route('principal') }}" class="active-link"><img src="images/home.png" alt="home">
                         <span>Home</span></a></li>
-                <li><a href="#"><img src="images/network.png" alt="network"> <span>My Network</span></a></li>
-                <li><a href="#"><img src="images/jobs.png" alt="jobs"> <span>Jobs</span></a></li>
-                <li><a href="#"><img src="images/message.png" alt="message"> <span>Messaging</span></a></li>
-                <li><a href="#"><img src="images/notification.png" alt="notification">
+                <li><a href="{{ route('mired') }}"><img src="images/network.png" alt="network"> <span>My Network</span></a></li>
+                <li><a href="{{ route('empleos') }}"><img src="images/jobs.png" alt="jobs"> <span>Jobs</span></a></li>
+                <li><a href="{{ route('mensajes') }}"><img src="images/message.png" alt="message"> <span>Messaging</span></a></li>
+                <li><a href="{{ route('notificaciones') }}"><img src="images/notification.png" alt="notification">
                         <span>Notifications</span></a></li>
             </ul>
         </div>
@@ -47,7 +47,7 @@
                     <img src="images/user-1.png">
                     <div>
                         <h3>John Doe</h3>
-                        <a href="#">See your profile</a>
+                        <a href="{{ route('perfil') }}">See your profile</a>
                     </div>
                 </div>
                 <hr>

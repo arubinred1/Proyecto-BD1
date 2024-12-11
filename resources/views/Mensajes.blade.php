@@ -211,11 +211,11 @@
     <div class="logo">in</div>
     <input type="text" placeholder="Buscar">
     <nav>
-      <a href="#">Inicio</a>
-      <a href="#">MiRed</a>
-      <a href="#">Empleos</a>
-      <a href="#">Mensajes</a>
-      <a href="#">Notificaciones</a>
+      <a href=" {{ route('principal') }} ">Inicio</a>
+      <a href=" {{ route('mired') }} ">MiRed</a>
+      <a href=" {{ route('empleos') }} ">Empleos</a>
+      <a href=" {{ route('mensajes') }} ">Mensajes</a>
+      <a href=" {{ route('notificaciones') }} ">Notificaciones</a>
     </nav>
   </div>
 

@@ -15,74 +15,69 @@
 
     <nav class="navbar">
         <div class="navbar-left">
-            <a href="index.html" class="logo"><img src="{{ asset('images/logo.png') }}" alt="logo">
-            </a>
-            <div class="search-box">
-                <img src="images/search.png">
-                <input type="text" placeholder="Search for anything">
-            </div>
+         <a href=" {{ route('principal') }} " class="logo"><img src="{{ asset('images/logo.png') }}" alt="logo">
+         </a>
+         <div class="search-box">
+             <img src="images/search.png" >
+             <input type="text" placeholder="Search for anything">
+         </div>
         </div>
         <div class="navbar-center">
-            <ul>
-                <li><a href="#" class="active-link"><img src="images/home.png" alt="home">
-                        <span>Home</span></a></li>
-                <li><a href="#"><img src="images/network.png" alt="network"> <span>My Network</span></a></li>
-                <li><a href="#"><img src="images/jobs.png" alt="jobs"> <span>Jobs</span></a></li>
-                <li><a href="#"><img src="images/message.png" alt="message"> <span>Messaging</span></a></li>
-                <li><a href="#"><img src="images/notification.png" alt="notification">
-                        <span>Notifications</span></a></li>
-            </ul>
+         <ul>
+             <li><a href=" {{ route('principal') }} " class="active-link"><img src="images/home.png" alt="home"> <span>Home</span></a></li>
+             <li><a href=" {{ route('mired') }} "><img src="images/network.png" alt="network"> <span>My Network</span></a></li>
+             <li><a href=" {{ route('empleos') }} "><img src="images/jobs.png" alt="jobs"> <span>Jobs</span></a></li>
+             <li><a href=" {{ route('mensajes') }} "mensajes><img src="images/message.png" alt="message"> <span>Messaging</span></a></li>
+             <li><a href=" {{ route('notificaciones') }} "><img src="images/notification.png" alt="notification"> <span>Notifications</span></a></li>
+         </ul>
         </div>
         <div class="navbar-right">
-            <div class="online">
-                <img src="images/user-1.png" class="nav-profile-img" onclick="toggleMenu()">
-            </div>
+         <div class="online">
+         <img src="images/user-1.png" class="nav-profile-img" onclick="toggleMenu()">
+         </div> 
         </div>
         <!----Dropdown menu-->
         <div class="profile-menu-wrap" id="profileMenu">
-            <div class="profile-menu">
-                <div class="user-info">
-                    <img src="images/user-1.png">
-                    <div>
-                        <h3>John Doe</h3>
-                        <a href="#">See your profile</a>
-                    </div>
-                </div>
-                <hr>
-                <a href="#" class="profile-menu-link">
-                    <img src="images/feedback.png">
-                    <p>Give Feedback</p>
-                    <span>></span>
-                </a>
-                <a href="#" class="profile-menu-link">
-                    <img src="images/setting.png">
-                    <p>Settings & Privacy</p>
-                    <span>></span>
-                </a>
-                <a href="#" class="profile-menu-link">
-                    <img src="images/help.png">
-                    <p>Help & Support</p>
-                    <span>></span>
-                </a>
-                <a href="#" class="profile-menu-link">
-                    <img src="images/display.png">
-                    <p>Display & Accessibility</p>
-                    <span>></span>
-                </a>
-                <a href="#" class="profile-menu-link">
-                    <img src="images/logout.png">
-                    <p>Logout</p>
-                    <span>></span>
-                </a>
-
-
-            </div>
+         <div class="profile-menu">
+             <div class="user-info">
+                 <img src="images/user-1.png">
+                 <div>
+                     <h3>John Doe</h3>
+                     <a href=" {{ route('perfil') }} ">See your profile</a>
+                 </div>
+             </div>
+             <hr>
+             <a href="#" class="profile-menu-link">
+                 <img src="images/feedback.png">
+                 <p>Give Feedback</p>
+                 <span>></span>
+             </a>
+             <a href="#" class="profile-menu-link">
+                 <img src="images/setting.png">
+                 <p>Settings & Privacy</p>
+                 <span>></span>
+             </a>
+             <a href="#" class="profile-menu-link">
+                 <img src="images/help.png">
+                 <p>Help & Support</p>
+                 <span>></span>
+             </a>
+             <a href="#" class="profile-menu-link">
+                 <img src="images/display.png">
+                 <p>Display & Accessibility</p>
+                 <span>></span>
+             </a>
+             <a href="#" class="profile-menu-link">
+                 <img src="images/logout.png">
+                 <p>Logout</p>
+                 <span>></span>
+             </a>
+             
+ 
+         </div>
         </div>
-
-
-
-
-    </nav>
+ 
+     </nav>
 
 
     <div class="main-containerm">
@@ -107,7 +102,7 @@
                                 <th scope="row"><a class="aHref" href="">Seguidores</a></th>
                             </tr>
                             <tr>
-                                <th scope="row"><a class="aHref" href="">Grupos</a></th>
+                                <th scope="row"><a class="aHref" href=" {{ route('grupos') }} ">Grupos</a></th>
                             </tr>
                             <tr>
                                 <th scope="row"><a class="aHref" href="">Eventos</a></th>
@@ -151,7 +146,7 @@
                     <li>Ponte al dia</li>
                 </div>
             </div>
-            <div class="bordeDiv">
+            {{-- <div class="bordeDiv">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
                         <!-- Invitacion a la izquierda -->
@@ -206,7 +201,7 @@
                         </div>
                     </nav>
                 </div>
-            </div>
+            </div> --}}
 
 
 
