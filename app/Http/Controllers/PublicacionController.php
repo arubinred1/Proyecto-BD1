@@ -9,18 +9,6 @@ use Illuminate\Support\Facades\DB;
 class PublicacionController extends Controller
 {
     public function mostrarPublicaciones() {
-
-        // $publicaciones = DB::table('TBL_PUBLICACIONES')
-        // ->join('TBL_USUARIOS', 'TBL_PUBLICACIONES.CODIGO_USUARIO', '=', 'TBL_USUARIOS.CODIGO_USUARIO')
-        // ->select(
-        //     'TBL_PUBLICACIONES.*',
-        //     'TBL_USUARIOS.NOMBRE_USUARIO AS nombre_usuario',
-        //     'TBL_USUARIOS.APELLIDO_USUARIO AS apellido_usuario',
-        //     'TBL_PUBLICACIONES.CONTENIDO_PUBLICACION AS contenido_publicacion'
-        // )
-        // ->get();
-        // return view("principal", compact("publicaciones"));
-
         
         $publicaciones = DB::table('TBL_PUBLICACIONES')
         ->leftJoin('TBL_USUARIOS', 'TBL_PUBLICACIONES.CODIGO_USUARIO', '=', 'TBL_USUARIOS.CODIGO_USUARIO')
@@ -49,4 +37,19 @@ class PublicacionController extends Controller
         ->get();
         return view('principal', compact('publicaciones'));
     }
+
+    public function agregarPublicacion(Request $request) {
+        DB::table('TBL_PUBLICACIONES')->insert([
+            'CODIGO_PUBLICACIONES' => $request->codigo,
+            'CODIGO_TIPO_PUBLICACION' => $request->tipo,
+            'CONTENIDO_PUBLICACION' => $request->contenido,
+            'DESCRIPCION_PUBLICACION' => $request->descripcion,
+            'FECHA_PUBLICACION' => $request->fecha,
+            'CODIGO_USUARIO' => $request->usuario,
+        ]);
+
+        // Redireccionar con mensaje de éxito
+        return redirect("/principal");
+    }
+
 }

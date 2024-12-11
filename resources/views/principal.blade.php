@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linkedin</title>
     <link rel="stylesheet" href="{{ asset('css\principal.css') }}">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 </head>
 
@@ -130,23 +135,38 @@
         </div>
         <div class="main-content">
             <div class="create-post">
-                <div class="create-post-input">
-                    <img src="images/user-1.png">
-                    <textarea rows="2" placeholder="Write Something"></textarea>
-                </div>
-                <div class="create-post-links">
-                    <li><img src="images/photo.png">Photo</li>
-                    <li><img src="images/video.png">Video</li>
-                    <li><img src="images/event.png">Event</li>
-                    <li>Post</li>
-                </div>
+                <form action=" {{ route('agregar.publicacion') }} " method="POST">
+                    @csrf
+                    <div class="create-post-input">
+                        <img src="images/user-1.png">
+                        {{-- <textarea rows="2" placeholder="Write Something"></textarea> --}}
+                        <input type="text" class="form-control" id="codigo" name="codigo"
+                            placeholder="Código">
+                        <input type="textarea" rows="2" class="form-control" id="descripcion"
+                            name="descripcion" placeholder="Descripción">
+                    </div>
+                    <div class="create-post-links">
+                        <input type="text" class="form-control" id="tipo" name="tipo"
+                            placeholder="Tipo publicación">
+                        <input type="text" class="form-control" id="contenido" name="contenido"
+                            placeholder="Contenido">
+                    </div>
+                    <div class="create-post-links">
+                        <input type="date" class="form-control" id="fecha" name="fecha"
+                            placeholder="Fecha">
+                        <input type="text" class="form-control" id="usuario" name="usuario"
+                            placeholder="Usuario">
+
+                    </div>
+                    <button type="submit" class="btn btn-success">POST</button>
+                </form>
             </div>
             <div class="sort-by">
                 <hr>
                 <p>Sort by : <span>top <img src="images/down-arrow.png"></span> </p>
 
             </div>
-            
+
 
             @foreach ($publicaciones as $publicacion)
                 <div class="post">
@@ -200,58 +220,6 @@
                 </div>
             @endforeach
 
-            <div class="post">
-                <div class="post-author">
-                    <img src="images/user-3.png">
-                    <div>
-                        <h1>Bejamin Leo</h1>
-                        <small>Founder and CEO at Giva | Angel Investor</small>
-                        <small>2 hours ago </small>
-                    </div>
-                </div>
-                <p>The sucess of every website depends on Search engine optimisation
-                    and digital marketing strategy. If you are not in the first page of all major search engines
-                    then you are ahead among your competitors.
-                </p>
-                <img src="images/post-image-4.png"width="100%">
-
-
-
-                <div class="post-stats">
-                    <div>
-                        <img src="images/thumbsup.png">
-                        <img src="images/love.png">
-                        <img src="images/clap.png">
-                        <span class="liked-users">Adam Doe and 89 others</span>
-                    </div>
-                    <div>
-                        <span>22 comments &middot; 40 shares</span>
-                    </div>
-                </div>
-                <div class="post-activity">
-                    <div>
-                        <img src="images/user-1.png" class="post-activity-user-icon">
-                        <img src="images/down-arrow.png" class="post-activity-arrow-icon">
-
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/like.png">
-                        <span>Like</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/comment.png">
-                        <span>Comment</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/share.png">
-                        <span>Share</span>
-                    </div>
-                    <div class="post-activity-link">
-                        <img src="images/send.png">
-                        <span>Send</span>
-                    </div>
-                </div>
-            </div>
 
         </div>
         <div class="right-sidebar">
@@ -330,6 +298,9 @@
             }
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('/js/scripts.js') }}"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>s
 </body>
 
 </html>

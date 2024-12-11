@@ -35,5 +35,9 @@ Route::get('/notificaciones', [VistasController::class, 'notificaciones'])->name
 Route::get('/perfil', [VistasController::class, 'perfil'])->name('perfil');
 Route::get('/grupos', [VistasController::class, 'grupos'])->name('grupos');
 
-
+// PUBLICACIONES
+// Mostrar publicaciones en principal
 Route::get('/principal', [PublicacionController::class, 'mostrarPublicaciones'])->name('principal');
+
+// Agregar publicación
+Route::post('/publicacion/agregar', [PublicacionController::class, 'agregarPublicacion'])->name('agregar.publicacion');
