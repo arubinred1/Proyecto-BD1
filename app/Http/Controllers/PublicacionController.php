@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\TBL_PUBLICACIONE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Session;
 class PublicacionController extends Controller
 {
     public function mostrarPublicaciones() {
         
+
+        $usuario = Session::get('usuario');
+
+        if (!$usuario) {
+            return redirect('/')->withErrors('Debes iniciar sesión para ver tu perfil');
+        }
+
         $publicaciones = DB::table('TBL_PUBLICACIONES')
         ->leftJoin('TBL_USUARIOS', 'TBL_PUBLICACIONES.CODIGO_USUARIO', '=', 'TBL_USUARIOS.CODIGO_USUARIO')
         ->leftJoin('TBL_COMENTARIOS', 'TBL_PUBLICACIONES.CODIGO_PUBLICACIONES', '=', 'TBL_COMENTARIOS.CODIGO_PUBLICACIONES')
@@ -34,8 +41,25 @@ class PublicacionController extends Controller
             'TBL_PUBLICACIONES.CONTENIDO_PUBLICACION',
             'TBL_PUBLICACIONES.DESCRIPCION_PUBLICACION'
         )
+        ->orderBy('TBL_PUBLICACIONES.FECHA_PUBLICACION', 'desc')
         ->get();
-        return view('principal', compact('publicaciones'));
+
+
+        foreach ($publicaciones as $publicacion) {
+            $publicacion->comentarios = DB::table('TBL_COMENTARIOS')
+                ->join('TBL_USUARIOS', 'TBL_COMENTARIOS.CODIGO_USUARIO', '=', 'TBL_USUARIOS.CODIGO_USUARIO')
+                ->select(
+                    'TBL_COMENTARIOS.CONTENIDO_COMENTARIO AS contenido_comentario',
+                    'TBL_COMENTARIOS.FECHA_COMENTARIO AS fecha_comentario',
+                    'TBL_USUARIOS.NOMBRE_USUARIO AS nombre_comentarista',
+                    'TBL_USUARIOS.APELLIDO_USUARIO AS apellido_comentarista'
+                )
+                ->where('TBL_COMENTARIOS.CODIGO_PUBLICACIONES', $publicacion->codigo_publicacion)
+                ->get();
+        }
+
+
+        return view('principal', compact('usuario','publicaciones'));
     }
 
     public function agregarPublicacion(Request $request) {
@@ -44,7 +68,7 @@ class PublicacionController extends Controller
             'CODIGO_TIPO_PUBLICACION' => $request->tipo,
             'CONTENIDO_PUBLICACION' => $request->contenido,
             'DESCRIPCION_PUBLICACION' => $request->descripcion,
-            'FECHA_PUBLICACION' => $request->fecha,
+            'FECHA_PUBLICACION' => now(),
             'CODIGO_USUARIO' => $request->usuario,
         ]);
 
@@ -52,4 +76,47 @@ class PublicacionController extends Controller
         return redirect("/principal");
     }
 
+    public function reaccionarPublicacion(Request $request) {
+        
+        $existeReaccion = DB::table('TBL_REACCIONES')
+            ->where('CODIGO_PUBLICACONES', $request->codigo_publicacion)
+            ->where('CODIGO_USUARIO', $request->codigo_usuario)
+            ->exists();
+
+        if ($existeReaccion) {
+            DB::table('TBL_REACCIONES')
+            ->where('CODIGO_PUBLICACONES', $request->codigo_publicacion)
+            ->where('CODIGO_USUARIO', $request->codigo_usuario)
+            ->delete();
+
+            return redirect("/principal")->with('success', 'Reacción eliminada con éxito.');
+        }
+
+        // Insertar la nueva reacción
+        DB::table('TBL_REACCIONES')->insert([
+            'CODIGO_PUBLICACONES' => $request->codigo_publicacion,
+            'CODIGO_USUARIO' => $request->codigo_usuario,
+            'CODIGO_TIPO_REACCION' => $request->tipo_reaccion,
+            'FECHA_REACCION' => now(),
+        ]);
+
+        // Redireccionar con mensaje de éxito
+        return redirect("/principal")->with('success', '¡Reacción registrada correctamente!');
+    }
+
+
+    public function comentarPublicacion(Request $request)
+    {
+        DB::table('TBL_COMENTARIOS')->insert([
+            // 'CODIGO_COMENTARIO' => DB::raw('TBL_COMENTARIOS_SEQ.NEXTVAL'), // Cambia si tienes una secuencia
+            'CODIGO_COMENTARIO' => $request->codigo_comentario,
+            'CONTENIDO_COMENTARIO' => $request->contenido_comentario,
+            'FECHA_COMENTARIO' => now(),
+            'CODIGO_USUARIO' => $request->codigo_usuario,
+            'CODIGO_PUBLICACIONES' => $request->codigo_publicacion,
+            'CODIGO_COMENTARIO_COMENTADO' => null,
+        ]);
+
+        return redirect('/principal');
+    }
 }

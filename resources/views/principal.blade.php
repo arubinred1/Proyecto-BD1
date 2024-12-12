@@ -22,7 +22,11 @@
             </a>
             <div class="search-box">
                 <img src="images/search.png">
-                <input type="text" placeholder="Search for anything">
+                <form action="{{ route('mostrar.usuarios') }}" method="GET" class="d-flex">
+                    <input type="text" name="query" placeholder="Buscar" class="form-control"
+                        required>
+                    <button type="submit" class="btn btn-primary ms-2">Buscar</button>
+                </form>
             </div>
         </div>
         <div class="navbar-center">
@@ -41,16 +45,16 @@
         </div>
         <div class="navbar-right">
             <div class="online">
-                <img src="images/user-1.png" class="nav-profile-img" onclick="toggleMenu()">
+                <img src="{{ $usuario->fotografia }}" class="nav-profile-img" onclick="toggleMenu()">
             </div>
         </div>
         <!----Dropdown menu-->
         <div class="profile-menu-wrap" id="profileMenu">
             <div class="profile-menu">
                 <div class="user-info">
-                    <img src="images/user-1.png">
+                    <img src="{{ $usuario->fotografia }}">
                     <div>
-                        <h3>{{ session('nombre') }} {{ session('apellido') }}</h3>
+                        <h3>{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</h3>
                         <a href=" {{ route('perfil') }} ">See your profile</a>
                     </div>
                 </div>
@@ -75,11 +79,15 @@
                     <p>Display & Accessibility</p>
                     <span>></span>
                 </a>
-                <a href="#" class="profile-menu-link">
+                <a href="#" class="profile-menu-link" onclick="logoutConfirm(event)">
                     <img src="images/logout.png">
                     <p>Logout</p>
                     <span>></span>
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
 
 
             </div>
@@ -93,8 +101,8 @@
             <div class="sidebar-profile-box">
                 <img src="images/cover-pic.png" width="100%">
                 <div class="sidebar-profile-info">
-                    <img src="images/user-1.png">
-                    <h1>{{ session('nombre') }} {{ session('apellido') }}</h1>
+                    <img src="{{ $usuario->fotografia }}">
+                    <h1>{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</h1>
                     <h3>Data Analyst at IBM</h3>
                     <ul>
                         <li>Your profile views <span>24</span></li>
@@ -138,11 +146,11 @@
                 <form action=" {{ route('agregar.publicacion') }} " method="POST">
                     @csrf
                     <div class="create-post-input">
-                        <img src="images/user-1.png">
+                        <img src="{{ $usuario->fotografia }}">
                         {{-- <textarea rows="2" placeholder="Write Something"></textarea> --}}
                         <input type="text" class="form-control" id="codigo" name="codigo"
                             placeholder="Código">
-                        <input type="textarea" rows="2" class="form-control" id="descripcion"
+                        <input type="area" rows="2" class="form-control" id="descripcion"
                             name="descripcion" placeholder="Descripción">
                     </div>
                     <div class="create-post-links">
@@ -152,10 +160,8 @@
                             placeholder="Contenido">
                     </div>
                     <div class="create-post-links">
-                        <input type="date" class="form-control" id="fecha" name="fecha"
-                            placeholder="Fecha">
-                        <input type="text" class="form-control" id="usuario" name="usuario"
-                            placeholder="Usuario">
+                        <input type="hidden" class="form-control" id="usuario" name="usuario"
+                            value="{{ $usuario->codigo_usuario }}">
 
                     </div>
                     <button type="submit" class="btn btn-success">POST</button>
@@ -191,7 +197,7 @@
                             <span class="liked-users">{{ $publicacion->total_reacciones }}</span>
                         </div>
                         <div>
-                            <span>22 comments &middot; 40 shares</span>
+                            <span>{{ $publicacion->total_comentarios }} comentarios </span>
                         </div>
                     </div>
                     <div class="post-activity">
@@ -200,13 +206,25 @@
                             <img src="images/down-arrow.png" class="post-activity-arrow-icon">
 
                         </div>
+
                         <div class="post-activity-link">
-                            <img src="images/like.png">
-                            <span>Like</span>
+                            <form action=" {{ route('reaccionar.publicacion') }} " method="POST">
+                                @csrf
+                                <input type="hidden" class="form-control" id="codigo_publicacion"
+                                    name="codigo_publicacion" value="{{ $publicacion->codigo_publicacion }}">
+                                <input type="hidden" class="form-control" id="codigo_usuario" name="codigo_usuario"
+                                    value="{{ $usuario->codigo_usuario }}">
+                                <input type="hidden" class="form-control" id="tipo_reaccion" name="tipo_reaccion"
+                                    value="1">
+                                <img src="images/like.png">
+                                <button type="submit" class="btn btn-success"><span>Recomendar</span></button>
+                            </form>
                         </div>
+
                         <div class="post-activity-link">
                             <img src="images/comment.png">
-                            <span>Comment</span>
+                            <span>Comentar</span>
+                            </button>
                         </div>
                         <div class="post-activity-link">
                             <img src="images/share.png">
@@ -218,40 +236,49 @@
                         </div>
                     </div>
                 </div>
+
+                <div>
+                    <form action=" {{ route('comentar.publicacion') }} " method="POST">
+                        @csrf
+                        <input type="text" class="form-control" id="codigo_comentario"
+                            name="codigo_comentario" placeholder="Codigo comentario">
+                        <input type="hidden" class="form-control" id="codigo_publicacion"
+                            name="codigo_publicacion" value="{{ $publicacion->codigo_publicacion }}">
+                        <input type="hidden" class="form-control" id="codigo_usuario" name="codigo_usuario"
+                            value="{{ $usuario->codigo_usuario }}">
+                        <input type="textarea" class="form-control" id="contenido_comentario" name="contenido_comentario" >
+                        <img src="images/comment.png">
+                        <button type="submit" class="btn btn-success"><span>Comentar</span></button>
+                    </form>
+                </div>
+
+                <div class="comentarios">
+                    <h5>Comentarios:</h5>
+                    @if ($publicacion->comentarios->isEmpty())
+                        <p>No hay comentarios aún.</p>
+                    @else
+                        @foreach ($publicacion->comentarios as $comentario)
+                            <div class="comentario">
+                                <strong>{{ $comentario->nombre_comentarista }} {{ $comentario->apellido_comentarista }}</strong>:
+                                <p>{{ $comentario->contenido_comentario }}</p>
+                                <small>{{ $comentario->fecha_comentario }}</small>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+                <br><br>
             @endforeach
 
 
         </div>
         <div class="right-sidebar">
-            <div class="sidebar-news">
-                <img src="images/more.png" class="info-icon">
-                <h3>Trending News</h3>
-
-                <a href="#">High Demand for Skilled Employees</a>
-                <span>1d ago &middot; 10,934 readers</span>
-
-
-                <a href="#">Inflation in Canada Affects the Workforce</a>
-                <span>2d ago &middot; 7,043 readers</span>
-
-
-                <a href="#">Mass Recruiters fire Employees</a>
-                <span>4d ago &middot; 17,789 readers</span>
-
-
-                <a href="#">Crypto predicted to Boom this year</a>
-                <span>9d ago &middot; 2, 436 readers</span>
-
-                <a href="#" class="read-more-link">Read More</a>
-
-
-            </div>
 
             <div class="sidebar-ad">
                 <small>Ad &middot; &middot; &middot;</small>
                 <p>Master Web Development</p>
                 <div>
-                    <img src="images/user-1.png">
+                    <img src="{{ $usuario->fotografia }}">
                     <img src="images/mi-logo.png">
 
                 </div>
@@ -298,9 +325,53 @@
             }
         }
     </script>
+
+    <script>
+        function logoutConfirm(event) {
+            event.preventDefault();
+            if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+                document.getElementById('logout-form').submit();
+            }
+        }
+    </script>
+
+    <script>
+        document.getElementById('formComentario').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            'content')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Cerrar modal
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('comentarioModal'));
+                        modal.hide();
+
+                        // Actualizar lista de comentarios
+                        const comentarioHTML = `
+                <div class="comentario">
+                    <strong>${formData.get('codigo_usuario')}</strong>
+                    <p>${formData.get('contenido_comentario')}</p>
+                </div>`;
+                        document.getElementById(`comentarios-publicacion-${formData.get('codigo_publicacion')}`)
+                            .innerHTML += comentarioHTML;
+                    }
+                });
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('/js/scripts.js') }}"></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>s
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 
 </html>

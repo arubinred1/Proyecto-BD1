@@ -209,7 +209,6 @@
   <!-- Header -->
   <div class="header">
     <div class="logo">in</div>
-    <input type="text" placeholder="Buscar">
     <nav>
       <a href=" {{ route('principal') }} ">Inicio</a>
       <a href=" {{ route('mired') }} ">MiRed</a>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ofertas de Empleo</title>
     <link rel="stylesheet" href="{{ asset('css\principal.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -98,158 +100,190 @@
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Ofertas de Empleo</h1>
-    </header>
+
+
     <nav class="navbar">
         <div class="navbar-left">
-         <a href=" {{ route('principal') }} " class="logo"><img src="{{ asset('images/logo.png') }}" alt="logo">
-         </a>
-         <div class="search-box">
-             <img src="images/search.png" >
-             <input type="text" placeholder="Search for anything">
-         </div>
+            <a href="{{ route('principal') }}" class="logo"><img src="{{ asset('images/logo.png') }}" alt="logo">
+            </a>
+            <div class="search-box">
+                <img src="images/search.png">
+                <form action="{{ route('mostrar.usuarios') }}" method="GET" class="d-flex">
+                    <input type="text" name="query" placeholder="Buscar" class="form-control"
+                        required>
+                    <button type="submit" class="btn btn-primary ms-2">Buscar</button>
+                </form>
+            </div>
         </div>
         <div class="navbar-center">
-         <ul>
-             <li><a href=" {{ route('principal') }} " class="active-link"><img src="images/home.png" alt="home"> <span>Home</span></a></li>
-             <li><a href=" {{ route('mired') }} "><img src="images/network.png" alt="network"> <span>My Network</span></a></li>
-             <li><a href=" {{ route('empleos') }} "><img src="images/jobs.png" alt="jobs"> <span>Jobs</span></a></li>
-             <li><a href=" {{ route('mensajes') }} "mensajes><img src="images/message.png" alt="message"> <span>Messaging</span></a></li>
-             <li><a href=" {{ route('notificaciones') }} "><img src="images/notification.png" alt="notification"> <span>Notifications</span></a></li>
-         </ul>
+            <ul>
+                <li><a href=" {{ route('principal') }} " class="active-link"><img src="images/home.png" alt="home">
+                        <span>Home</span></a></li>
+                <li><a href=" {{ route('mired') }} "><img src="images/network.png" alt="network"> <span>My
+                            Network</span></a></li>
+                <li><a href=" {{ route('empleos') }} "><img src="images/jobs.png" alt="jobs"> <span>Jobs</span></a>
+                </li>
+                <li><a href=" {{ route('mensajes') }} "mensajes><img src="images/message.png" alt="message">
+                        <span>Messaging</span></a></li>
+                <li><a href=" {{ route('notificaciones') }} "><img src="images/notification.png" alt="notification">
+                        <span>Notifications</span></a></li>
+            </ul>
         </div>
         <div class="navbar-right">
-         <div class="online">
-         <img src="images/user-1.png" class="nav-profile-img" onclick="toggleMenu()">
-         </div> 
+            <div class="online">
+                <img src="{{ $usuario->fotografia }}" class="nav-profile-img" onclick="toggleMenu()">
+            </div>
         </div>
         <!----Dropdown menu-->
         <div class="profile-menu-wrap" id="profileMenu">
-         <div class="profile-menu">
-             <div class="user-info">
-                 <img src="images/user-1.png">
-                 <div>
-                     <h3>John Doe</h3>
-                     <a href=" {{ route('perfil') }} ">See your profile</a>
-                 </div>
-             </div>
-             <hr>
-             <a href="#" class="profile-menu-link">
-                 <img src="images/feedback.png">
-                 <p>Give Feedback</p>
-                 <span>></span>
-             </a>
-             <a href="#" class="profile-menu-link">
-                 <img src="images/setting.png">
-                 <p>Settings & Privacy</p>
-                 <span>></span>
-             </a>
-             <a href="#" class="profile-menu-link">
-                 <img src="images/help.png">
-                 <p>Help & Support</p>
-                 <span>></span>
-             </a>
-             <a href="#" class="profile-menu-link">
-                 <img src="images/display.png">
-                 <p>Display & Accessibility</p>
-                 <span>></span>
-             </a>
-             <a href="#" class="profile-menu-link">
-                 <img src="images/logout.png">
-                 <p>Logout</p>
-                 <span>></span>
-             </a>
-             
- 
-         </div>
+            <div class="profile-menu">
+                <div class="user-info">
+                    <img src="{{ $usuario->fotografia }}">
+                    <div>
+                        <h3>{{ $usuario->nombre_usuario }} {{ $usuario->apellido_usuario }}</h3>
+                        <a href=" {{ route('perfil') }} ">See your profile</a>
+                    </div>
+                </div>
+                <hr>
+                <a href="#" class="profile-menu-link">
+                    <img src="images/feedback.png">
+                    <p>Give Feedback</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="profile-menu-link">
+                    <img src="images/setting.png">
+                    <p>Settings & Privacy</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="profile-menu-link">
+                    <img src="images/help.png">
+                    <p>Help & Support</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="profile-menu-link">
+                    <img src="images/display.png">
+                    <p>Display & Accessibility</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="profile-menu-link" onclick="logoutConfirm(event)">
+                    <img src="images/logout.png">
+                    <p>Logout</p>
+                    <span>></span>
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+
+
+            </div>
         </div>
- 
-     </nav>
 
-    
+    </nav>
 
-    <div class="container" id="job-list">
-        <!-- Las tarjetas de trabajo se generarán dinámicamente -->
+    <h1>Empleos Disponibles</h1>
+
+    <div class="text-end mb-3">
+        <button class="btn btn-primary apply-button" data-bs-toggle="modal" data-bs-target="#addJobModal">Agregar
+            Empleo</button>
     </div>
+
+    @foreach ($empleos as $empleo)
+        <div class="container" id="job-list">
+            <h2>{{ $empleo->puesto_laboral }}</h2>
+            <p><strong>Empresa:</strong> {{ $empleo->codigo_empresa }}</p>
+            <p>{{ $empleo->descripcion }}</p>
+            <small>Fecha de publicación:
+                {{ $empleo->fecha_publicacion }}</small>
+
+            <div class="job-actions">
+                <button class="apply-button">Aplicar</button>
+                <button class="save-button">Guardar</button>
+            </div>
+        </div>
+    @endforeach
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addJobModal" tabindex="-1" aria-labelledby="addJobModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('agregar.empleo') }}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addJobModalLabel">Agregar Nuevo Empleo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="codigo_empresa" class="form-label">Código oferta laboral</label>
+                            <input type="text" name="codigo_oferta_laboral" id="codigo_empresa" class="form-control"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigo_empresa" class="form-label">Código Empresa</label>
+                            <input type="text" name="codigo_empresa" id="codigo_empresa" class="form-control"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="puesto_laboral" class="form-label">Puesto Laboral</label>
+                            <input type="text" name="puesto_laboral" id="puesto_laboral" class="form-control"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea name="descripcion" id="descripcion" class="form-control" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <footer>
         © 2024 Linkedin
     </footer>
 
     <script>
-        // Ejemplo de datos de empleos
-        const jobs = [
-            {
-                title: "Desarrollador Front-End",
-                company: "Tech Innovators",
-                location: "Remoto",
-                description: "Buscamos un desarrollador front-end con experiencia en React y CSS."
-            },
-            {
-                title: "Analista de Datos",
-                company: "Data Insights",
-                location: "USA, Florida",
-                description: "Análisis de datos para proyectos empresariales. Conocimiento en Python y SQL."
-            },
-            {
-                title: "Diseñador UI/UX",
-                company: "Innova",
-                location: "Honduras, San Pedro Sula",
-                description: "Responsable de diseñar experiencias de usuario modernas y atractivas."
-            }
-        ];
-
-        // Contenedor para las ofertas de empleo
-        const jobList = document.getElementById('job-list');
-
-        // Generar tarjetas de empleo dinámicamente
-        jobs.forEach(job => {
-            const jobCard = document.createElement('div');
-            jobCard.className = 'job-card';
-
-            jobCard.innerHTML = `
-                <h2>${job.title}</h2>
-                <p><strong>Empresa:</strong> ${job.company}</p>
-                <p><strong>Ubicación:</strong> ${job.location}</p>
-                <p>${job.description}</p>
-                <div class="job-actions">
-                    <button class="apply-button">Aplicar</button>
-                    <button class="save-button">Guardar</button>
-                </div>
-            `;
-
-            jobList.appendChild(jobCard);
-        });
-
-        // Agregar funcionalidad a los botones de guardar
-        document.addEventListener('click', (event) => {
-            if (event.target.classList.contains('save-button')) {
-                event.target.textContent = 'Guardado';
-                event.target.disabled = true;
-            }
-        });
-
         let profileMenu = document.getElementById("profileMenu");
 
-    function toggleMenu(){
-        profileMenu.classList.toggle("open-menu");
-    }
-
-    let sideActivity = document.getElementById("sidebarActivity");
-    let moreLink = document.getElementById("showMoreLink");
-
-    function toggleActivity(){
-        sideActivity.classList.toggle("open-activity");
-        if (sideActivity.classList.contains("open-activity")) {
-            moreLink.innerHTML="Show less <b>-</b>";
-            
+        function toggleMenu() {
+            profileMenu.classList.toggle("open-menu");
         }
-        else{
-            moreLink.innerHTML="Show More <b>+</b>";
+
+        let sideActivity = document.getElementById("sidebarActivity");
+        let moreLink = document.getElementById("showMoreLink");
+
+        function toggleActivity() {
+            sideActivity.classList.toggle("open-activity");
+            if (sideActivity.classList.contains("open-activity")) {
+                moreLink.innerHTML = "Show less <b>-</b>";
+
+            } else {
+                moreLink.innerHTML = "Show More <b>+</b>";
+            }
         }
-    }
     </script>
+
+    <script>
+        function logoutConfirm(event) {
+            event.preventDefault();
+            if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+                document.getElementById('logout-form').submit();
+            }
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

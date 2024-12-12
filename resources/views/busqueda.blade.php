@@ -172,42 +172,47 @@
                             <button type="button" class="btn btn-primary">Conectar</button>
                         </div>
                     </div>
-
+                    @if (isset($query))
+                    <p>Resultados para: <strong>{{ $query }}</strong></p>
+                @endif
+                
+                @if ($usuariosNoConectados->isEmpty())
+                    <p>No se encontraron usuarios con ese nombre.</p>
+                @else
                     @foreach ($usuariosNoConectados as $usuarioNoConectado)
                         <div class="flex-item">
                             <div class="image-container">
-                                <img src="{{ $usuarioNoConectado->fotografia }}"
-                                    alt="Foto de {{ $usuarioNoConectado->nombre_usuario }}">
-                                <p>{{ $usuarioNoConectado->nombre_usuario }}
-                                    {{ $usuarioNoConectado->apellido_usuario }}</p>
-
+                                <img src="{{ $usuarioNoConectado->fotografia }}" 
+                                     alt="Foto de {{ $usuarioNoConectado->nombre_usuario }}">
+                                <p>{{ $usuarioNoConectado->nombre_usuario }} {{ $usuarioNoConectado->apellido_usuario }}</p>
+                
                                 @if (isset($usuario->estado_conexion))
-                                    <!-- Verificar si la propiedad está definida -->
                                     @if ($usuario->estado_conexion === 2)
                                         <button type="button" class="btn btn-secondary" disabled>Pendiente</button>
                                     @elseif ($usuario->estado_conexion === 3)
                                         <button type="button" class="btn btn-danger" disabled>Rechazado</button>
                                     @else
-                                        <form action=" {{ route('conectar.usuario') }} " method="POST">
+                                        <form action="{{ route('conectar.usuario') }}" method="POST">
                                             @csrf
                                             <input type="text" name="codigo_conexion">
-                                            <input type="hidden" name="codigo_usuario_receptor"
-                                                value="{{ $usuarioNoConectado->codigo_usuario }}">
+                                            <input type="hidden" name="codigo_usuario_receptor" 
+                                                   value="{{ $usuarioNoConectado->codigo_usuario }}">
                                             <button type="submit" class="btn btn-primary">Conectar</button>
                                         </form>
                                     @endif
                                 @else
-                                    <form action=" {{ route('conectar.usuario') }} " method="POST">
+                                    <form action="{{ route('conectar.usuario') }}" method="POST">
                                         @csrf
                                         <input type="text" name="codigo_conexion">
-                                        <input type="hidden" name="codigo_usuario_receptor"
-                                            value="{{ $usuarioNoConectado->codigo_usuario }}">
+                                        <input type="hidden" name="codigo_usuario_receptor" 
+                                               value="{{ $usuarioNoConectado->codigo_usuario }}">
                                         <button type="submit" class="btn btn-primary">Conectar</button>
                                     </form>
                                 @endif
                             </div>
                         </div>
                     @endforeach
+                @endif
 
                 </div>
             </div>
