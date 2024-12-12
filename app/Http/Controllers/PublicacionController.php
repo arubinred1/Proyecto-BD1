@@ -72,7 +72,6 @@ class PublicacionController extends Controller
             'CODIGO_USUARIO' => $request->usuario,
         ]);
 
-        // Redireccionar con mensaje de éxito
         return redirect("/principal");
     }
 
@@ -92,7 +91,6 @@ class PublicacionController extends Controller
             return redirect("/principal")->with('success', 'Reacción eliminada con éxito.');
         }
 
-        // Insertar la nueva reacción
         DB::table('TBL_REACCIONES')->insert([
             'CODIGO_PUBLICACONES' => $request->codigo_publicacion,
             'CODIGO_USUARIO' => $request->codigo_usuario,
@@ -100,8 +98,7 @@ class PublicacionController extends Controller
             'FECHA_REACCION' => now(),
         ]);
 
-        // Redireccionar con mensaje de éxito
-        return redirect("/principal")->with('success', '¡Reacción registrada correctamente!');
+        return redirect("/principal");
     }
 
 
@@ -119,4 +116,31 @@ class PublicacionController extends Controller
 
         return redirect('/principal');
     }
+
+
+    public function actualizarPublicacion(Request $request, $codigo_publicacion)
+    {
+        // Actualizar la publicación
+        DB::table('TBL_PUBLICACIONES')
+            ->where('CODIGO_PUBLICACIONES', '=', $codigo_publicacion)
+            ->update([
+                'CONTENIDO_PUBLICACION' => $request->input('contenido_publicacion'),
+                'DESCRIPCION_PUBLICACION' => $request->input('descripcion_publicacion'),
+                'FECHA_PUBLICACION' => now(),
+            ]);
+
+        return redirect()->back()->with('success', 'Publicación actualizada correctamente.');
+    }
+
+    public function eliminarPublicacion($codigo_publicacion)
+    {
+        DB::table('TBL_PUBLICACIONES')
+            ->where('CODIGO_PUBLICACIONES', '=', $codigo_publicacion)
+            ->delete();
+
+        return redirect()->back();
+    }
+
+
+
 }

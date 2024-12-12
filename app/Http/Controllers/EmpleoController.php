@@ -42,4 +42,31 @@ class EmpleoController extends Controller
         // Redireccionar con mensaje de éxito
         return redirect("/empleos");
     }
+
+
+    public function actualizarEmpleo(Request $request, $codigo_oferta_trabajo)
+    {
+        // Actualizar el empleo
+        DB::table('TBL_OFERTAS_TRABAJOS')
+            ->where('CODIGO_OFERTA_TRABAJO', '=', $codigo_oferta_trabajo)
+            ->update([
+                'CODIGO_EMPRESA' => $request->input('codigo_empresa'),
+                'PUESTO_LABORAL' => $request->input('puesto_laboral'),
+                'DESCRIPCION' => $request->input('descripcion'),
+                'FECHA_PUBLICACION' => now(),
+            ]);
+
+        return redirect()->back()->with('success', 'Empleo actualizado correctamente.');
+    }
+
+
+    public function eliminarEmpleo($codigo_oferta_trabajo)
+    {
+        // Eliminar el empleo
+        DB::table('TBL_OFERTAS_TRABAJOS')
+            ->where('CODIGO_OFERTA_TRABAJO', '=', $codigo_oferta_trabajo)
+            ->delete();
+
+        return redirect()->back()->with('success', 'Empleo eliminado correctamente.');
+    }
 }

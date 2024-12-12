@@ -81,23 +81,50 @@ class UsuarioController extends Controller
             return redirect('/')->withErrors('Debes iniciar sesión para ver tu perfil');
         }
 
-        // $datosUsuario = DB::table('TBL_USUARIOS AS u')
-        // ->leftJoin('TBL_DETALLES_USUARIO AS d', 'u.CODIGO_USUARIO', '=', 'd.CODIGO_USUARIO')
-        // ->select(
-        //     'u.CODIGO_USUARIO AS codigo_usuario',
-        //     'u.NOMBRE_USUARIO AS nombre_usuario',
-        //     'u.APELLIDO_USUARIO AS apellido_usuario',
-        //     'u.EMAIL AS email',
-        //     'u.FOTOGRAFIA AS fotografia',
-        //     'd.TELEFONO AS telefono',
-        //     'd.DIRECCION AS direccion',
-        //     'd.FECHA_NACIMIENTO AS fecha_nacimiento'
-        // )
-        // ->where('u.CODIGO_USUARIO', '=', $usuario->codigo_usuario)
-        // ->first() // Obtener un solo registro
-        // ->get();
+        // Traer datos del usuario
+        $datosUsuario = DB::table('TBL_USUARIOS AS u')
+        ->leftJoin('TBL_DETALLES_USUARIO AS d', 'u.CODIGO_USUARIO', '=', 'd.CODIGO_USUARIO')
+        ->select(
+            'u.CODIGO_USUARIO AS codigo_usuario',
+            'u.NOMBRE_USUARIO AS nombre_usuario',
+            'u.APELLIDO_USUARIO AS apellido_usuario',
+            'u.EMAIL AS email',
+            'u.FOTOGRAFIA AS fotografia',
+            'd.TELEFONO AS telefono',
+            'd.DIRECCION AS direccion',
+            'd.FECHA_NACIMIENTO AS fecha_nacimiento'
+        )
+        ->where('u.CODIGO_USUARIO', '=', $usuario->codigo_usuario)
+        ->first()
+        ->get();
 
 
         return view('perfil', compact('usuario'));
+    }
+
+    public function eliminarUsuario($codigo_usuario)
+    {
+        // Eliminar el usuario por código
+        DB::table('TBL_USUARIOS')
+            ->where('CODIGO_USUARIO', '=', $codigo_usuario)
+            ->delete();
+
+        return redirect()->back();
+    }
+
+    public function editarUsuario(Request $request, $codigo_usuario)
+    {
+
+        // Actualizar del usuario
+        DB::table('TBL_USUARIOS')
+            ->where('CODIGO_USUARIO', '=', $codigo_usuario)
+            ->update([
+                'NOMBRE_USUARIO' => $request->nombre_usuario,
+                'APELLIDO_USUARIO' => $request->apellido_usuario,
+                'EMAIL' => $request->email,
+                'FOTOGRAFIA' => $request->fotografia,
+            ]);
+
+        return redirect()->back();
     }
 }
